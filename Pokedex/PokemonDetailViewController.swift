@@ -23,13 +23,24 @@ class PokemonDetailViewController: UIViewController {
     @IBOutlet weak var nextEvolutionImage: UIImageView!
     @IBOutlet weak var evolutionLabel: UILabel!
     
-    
     var pokemon: Pokemon!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(pokemon)
+        nameLabel.text = pokemon.name.capitalized
+        mainImage.image = UIImage(named: "\(pokemon.pokedexId)")
+        
+        pokemon.downloadPokemonDetails {
+//            descriptionLabel.text = pokemon.description
+//            typeLabel.text = pokemon.type
+//            defenseLabel.text = "\(pokemon.defense)"
+//            heightLabel.text = "\(pokemon.height)"
+//            pokedexLabel.text = "\(pokemon.pokedexId)"
+//            weightLabel.text = "\(pokemon.weight)"
+//            baseAttackLabel.text = "\(pokemon.attack)"
+//            evolutionLabel.text = pokemon.nextEvolutionText
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
