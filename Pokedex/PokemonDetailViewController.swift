@@ -20,7 +20,7 @@ class PokemonDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        nameLabel.text = pokemon.name
+//        nameLabel.text = pokemon.name
     }
 
     override func didReceiveMemoryWarning() {
