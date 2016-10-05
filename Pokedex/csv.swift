@@ -1,6 +1,7 @@
 //
 //  CSV
-//  Modified by Mark Price on 08/14/15
+//  Created by Mark Price on 08/14/15
+//  Modified by Anthony Whitaker on 10/05/16
 //
 
 import Foundation
@@ -25,11 +26,11 @@ public class CSV {
         }
     }
     
-    public convenience init(contentsOfURL url: String) throws {
+    public convenience init(contentsOfFile path: String) throws {
         let comma = CharacterSet(charactersIn: ",")
         let csvString: String?
         do {
-            csvString = try String(contentsOfFile: url, encoding: String.Encoding.utf8)
+            csvString = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
         } catch _ {
             csvString = nil
         };
