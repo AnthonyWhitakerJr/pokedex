@@ -84,13 +84,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    
-    //TODO: Delete me
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let pokemon = pokemonOnScreen[indexPath.row]
-        performSegue(withIdentifier: "PokemonDetailVC", sender: pokemon)
-    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 105, height: 105)
     }
@@ -118,7 +111,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             pokemonFiltered = pokemonAll.filter({$0.name.range(of: lower) != nil})
         }
         collection.reloadData()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -132,4 +124,3 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
 }
-
