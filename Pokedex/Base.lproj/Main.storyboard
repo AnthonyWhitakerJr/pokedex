@@ -6,6 +6,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PokemonFont.ttf">
+            <string>PokemonSolidNormal</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -20,9 +25,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1VF-yc-Rpa">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokédex" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZP-dn-P16">
+                                        <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="31"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWf-pU-FNb">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="47q-5z-UWa"/>
+                                            <constraint firstAttribute="height" constant="30" id="YdM-sK-MJB"/>
+                                        </constraints>
+                                        <state key="normal" image="music"/>
+                                        <connections>
+                                            <action selector="musicButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xbE-tt-W8k"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="sZP-dn-P16" firstAttribute="centerY" secondItem="1VF-yc-Rpa" secondAttribute="centerY" id="6mG-Aq-YMb"/>
+                                    <constraint firstItem="sZP-dn-P16" firstAttribute="centerX" secondItem="1VF-yc-Rpa" secondAttribute="centerX" id="9nH-OR-Bno"/>
                                     <constraint firstAttribute="height" constant="55" id="B7Q-oG-byP"/>
+                                    <constraint firstItem="fWf-pU-FNb" firstAttribute="centerY" secondItem="1VF-yc-Rpa" secondAttribute="centerY" id="YZX-iI-Qyd"/>
+                                    <constraint firstItem="fWf-pU-FNb" firstAttribute="trailing" secondItem="1VF-yc-Rpa" secondAttribute="trailingMargin" id="zah-AY-AEI"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="Afs-8G-kIu"/>
@@ -104,6 +130,7 @@
     </scenes>
     <resources>
         <image name="bg" width="1920" height="1200"/>
+        <image name="music" width="100" height="100"/>
         <image name="pokeball" width="894" height="893"/>
     </resources>
 </document>
