@@ -12,11 +12,33 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 
     @IBOutlet weak var collection: UICollectionView!
     
+    var pokemon = [Pokemon]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collection.delegate = self
         collection.dataSource = self
+        
+        parsePokemonCSV()
+    }
+    
+    func parsePokemonCSV() {
+        let path = Bundle.main.path(forResource: "pokemon", ofType: "csv")
+        
+        do {
+            let csv = try CSV(contentsOfFile: path!)
+            let rows = csv.rows
+            
+            for row in rows {
+                let pokedexId = Int(row["id"]!)! //Force upwrap to fail fast
+                let name = row["identifier"]!
+                let pokemon = Pokemon(name: name, pokedexId: pokedexId)
+                self.pokemon.append(pokemon)
+            }
+        } catch let err as NSError {
+            print(err.debugDescription)
+        }
     }
 
 
@@ -27,7 +49,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as? PokeCell {
             
-            let pokemon = Pokemon(name: "Test", pokedexId: indexPath.row + 1)
+            let pokemon = self.pokemon[indexPath.row]
             cell.configureCell(pokemon: pokemon)
             
             return cell
