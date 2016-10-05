@@ -96,6 +96,7 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="dns-0W-wkN" id="a9o-CB-J3f"/>
                                             <outlet property="thumbImage" destination="r4w-cB-jYX" id="Q2V-yz-dWU"/>
+                                            <segue destination="oBE-hi-8L6" kind="show" identifier="PokemonDetailVC" id="bIy-g1-yHN"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -127,6 +128,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
+        </scene>
+        <!--Pokemon Detail View Controller-->
+        <scene sceneID="exK-B6-KJX">
+            <objects>
+                <viewController id="oBE-hi-8L6" customClass="PokemonDetailViewController" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oky-4p-IkK"/>
+                        <viewControllerLayoutGuide type="bottom" id="UpI-an-biK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xLa-tn-VKl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25D-Mb-3DK">
+                                <frame key="frameInset" minX="133" minY="195" width="120" height="21"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="W9I-LC-C5h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="25D-Mb-3DK" id="fDu-M6-sl1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qP9-xO-YfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1057" y="124"/>
         </scene>
     </scenes>
     <resources>

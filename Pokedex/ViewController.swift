@@ -14,8 +14,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var pokemon = [Pokemon]()
-    var filteredPokemon = [Pokemon]()
+    var pokemonAll = [Pokemon]()
+    var pokemonFiltered = [Pokemon]()
+    var pokemonOnScreen : [Pokemon] {
+        return inSearchMode ? self.pokemonFiltered : self.pokemonAll
+    }
     var inSearchMode = false
     
     var musicPlayer: AVAudioPlayer!
@@ -57,7 +60,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 let pokedexId = Int(row["id"]!)! //Force upwrap to fail fast
                 let name = row["identifier"]!
                 let pokemon = Pokemon(name: name, pokedexId: pokedexId)
-                self.pokemon.append(pokemon)
+                self.pokemonAll.append(pokemon)
             }
         } catch let err as NSError {
             print(err.debugDescription)
@@ -66,13 +69,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return inSearchMode ? self.filteredPokemon.count : self.pokemon.count
+        return pokemonOnScreen.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokeCell", for: indexPath) as? PokeCell {
 
-            let pokemon = inSearchMode ? self.filteredPokemon[indexPath.row] : self.pokemon[indexPath.row]
+            let pokemon = pokemonOnScreen[indexPath.row]
             cell.configureCell(pokemon: pokemon)
             
             return cell
@@ -81,8 +84,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    
+    //TODO: Delete me
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO: code this
+        let pokemon = pokemonOnScreen[indexPath.row]
+        performSegue(withIdentifier: "PokemonDetailVC", sender: pokemon)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -109,10 +115,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         } else {
             inSearchMode = true
             let lower = searchBar.text!.lowercased()
-            filteredPokemon = pokemon.filter({$0.name.range(of: lower) != nil})
+            pokemonFiltered = pokemonAll.filter({$0.name.range(of: lower) != nil})
         }
         collection.reloadData()
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PokemonDetailVC" {
+            if let detailsVC = segue.destination as? PokemonDetailViewController {
+                if let pokemonCell = sender as? PokeCell {
+                    detailsVC.pokemon = pokemonCell.pokemon
+                }
+            }
+        }
+    }
+    
 }
 

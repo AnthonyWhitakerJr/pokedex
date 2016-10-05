@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		923499771DA50AC800C73F67 /* csv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923499761DA50AC800C73F67 /* csv.swift */; };
+		926AF4591DA5413C007BB21B /* PokemonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926AF4581DA5413C007BB21B /* PokemonDetailViewController.swift */; };
 		928239D51DA4720E00D04DEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928239D41DA4720E00D04DEC /* AppDelegate.swift */; };
 		928239D71DA4720E00D04DEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928239D61DA4720E00D04DEC /* ViewController.swift */; };
 		928239DA1DA4720E00D04DEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928239D81DA4720E00D04DEC /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		923499761DA50AC800C73F67 /* csv.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = csv.swift; sourceTree = "<group>"; };
+		926AF4581DA5413C007BB21B /* PokemonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonDetailViewController.swift; sourceTree = "<group>"; };
 		928239D11DA4720E00D04DEC /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928239D41DA4720E00D04DEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		928239D61DA4720E00D04DEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				928239D61DA4720E00D04DEC /* ViewController.swift */,
+				926AF4581DA5413C007BB21B /* PokemonDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			files = (
 				923499771DA50AC800C73F67 /* csv.swift in Sources */,
 				928239D71DA4720E00D04DEC /* ViewController.swift in Sources */,
+				926AF4591DA5413C007BB21B /* PokemonDetailViewController.swift in Sources */,
 				928239EF1DA4792000D04DEC /* Pokemon.swift in Sources */,
 				928239DD1DA4720E00D04DEC /* Pokedex.xcdatamodeld in Sources */,
 				928239D51DA4720E00D04DEC /* AppDelegate.swift in Sources */,
