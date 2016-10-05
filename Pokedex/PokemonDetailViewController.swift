@@ -11,6 +11,19 @@ import UIKit
 class PokemonDetailViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var mainImage: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var defenseLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var pokedexLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var baseAttackLabel: UILabel!
+    @IBOutlet weak var currentEvolutionImage: UIImageView!
+    @IBOutlet weak var nextEvolutionImage: UIImageView!
+    @IBOutlet weak var evolutionLabel: UILabel!
+    
+    
     var pokemon: Pokemon!
     
     override func viewDidLoad() {
@@ -28,7 +41,12 @@ class PokemonDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
 
+    @IBAction func musicButtonPressed(_ sender: UIButton) {
+    }
     /*
     // MARK: - Navigation
 

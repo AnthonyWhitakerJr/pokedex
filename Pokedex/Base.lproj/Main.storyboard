@@ -143,14 +143,14 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVp-4K-Aua">
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIm-Td-eJV">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVW-xl-tDP" userLabel="Back Button">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="Jtj-wn-gxf"/>
-                                            <constraint firstAttribute="height" constant="30" id="RcE-oA-Srg"/>
+                                            <constraint firstAttribute="width" constant="30" id="UjE-Ul-qZc"/>
+                                            <constraint firstAttribute="height" constant="30" id="nfK-in-Yej"/>
                                         </constraints>
-                                        <state key="normal" image="music"/>
+                                        <state key="normal" image="back"/>
                                         <connections>
-                                            <action selector="musicButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b35-EF-XwZ"/>
+                                            <action selector="backButtonPressed:" destination="oBE-hi-8L6" eventType="touchUpInside" id="hqG-xx-aVM"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bulbasaur" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpS-Zt-zN0">
@@ -162,12 +162,16 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVW-xl-tDP">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QIm-Td-eJV">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="UjE-Ul-qZc"/>
-                                            <constraint firstAttribute="height" constant="30" id="nfK-in-Yej"/>
+                                            <constraint firstAttribute="width" constant="30" id="Jtj-wn-gxf"/>
+                                            <constraint firstAttribute="height" constant="30" id="RcE-oA-Srg"/>
                                         </constraints>
-                                        <state key="normal" image="back"/>
+                                        <state key="normal" image="music"/>
+                                        <connections>
+                                            <action selector="musicButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b35-EF-XwZ"/>
+                                            <action selector="musicButtonPressed:" destination="oBE-hi-8L6" eventType="touchUpInside" id="va2-aK-y7L"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -202,7 +206,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hQI-rk-9UP">
-                                                <mutableString key="text">Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker green patches. It has red eyes with white pupils and pointed, ear-like structures on top of its head. Its snout is short and blunt, and it has a wide mouth. A pair of small, pointed teeth are visible in the upper jaw when its mouth is open. Each of its thick legs ends with three sharp claws. On its back is a green plant bulb, which is grown from a seed planted there at birth. The bulb provides it with energy through photosynthesis as well as from the nutrient-rich seeds contained within.</mutableString>
+                                                <string key="text">Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker green patches. It has red eyes with white pupils and pointed, ear-like structures on top of its head. Its snout is short and blunt, and it has a wide mouth. A pair of small, pointed teeth are visible in the upper jaw when its mouth is open. Each of its thick legs ends with three sharp claws. On its back is a green plant bulb, which is grown from a seed planted there at birth. The bulb provides it with energy through photosynthesis as well as from the nutrient-rich seeds contained within.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -356,6 +360,20 @@
                             <constraint firstItem="iVp-4K-Aua" firstAttribute="top" secondItem="xLa-tn-VKl" secondAttribute="top" id="zPm-iH-Zzx"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="baseAttackLabel" destination="q5n-x8-9PY" id="pJU-B0-o5c"/>
+                        <outlet property="currentEvolutionImage" destination="bvu-eh-ycb" id="54N-2C-7fA"/>
+                        <outlet property="defenseLabel" destination="uSJ-Zt-alN" id="zoM-09-r71"/>
+                        <outlet property="descriptionLabel" destination="hQI-rk-9UP" id="Rci-BT-LfI"/>
+                        <outlet property="evolutionLabel" destination="YgQ-LK-xIO" id="TKn-yD-M4V"/>
+                        <outlet property="heightLabel" destination="Ftv-xu-4uG" id="0aS-NE-BDI"/>
+                        <outlet property="mainImage" destination="uth-YA-4CH" id="Yxl-ez-Ol7"/>
+                        <outlet property="nameLabel" destination="hpS-Zt-zN0" id="CO1-i4-wuD"/>
+                        <outlet property="nextEvolutionImage" destination="j5Q-Pk-UOM" id="cdp-Fn-rhN"/>
+                        <outlet property="pokedexLabel" destination="hDc-Co-IOc" id="2aq-d2-GQi"/>
+                        <outlet property="typeLabel" destination="XQm-Ha-SoH" id="RV5-Ri-BHn"/>
+                        <outlet property="weightLabel" destination="5t4-9H-tej" id="MFQ-xG-HdZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qP9-xO-YfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
