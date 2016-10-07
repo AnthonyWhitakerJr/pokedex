@@ -65,6 +65,7 @@ class Pokemon {
         _pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(self.pokedexId)/"
     }
     
+    //TODO: Refactor me
     func downloadPokemonDetails(completed: DownloadComplete) {
         let url = URL(string: _pokemonUrl)!
         Alamofire.request(url).responseJSON { response in
@@ -105,7 +106,54 @@ class Pokemon {
                     }
                     self._type = myTypes.joined(separator: "/").capitalized
                 }
+                
+                if let species = dict["species"] as? Dictionary<String, String> {
+                    if let speciesUrl = species["url"] {
+                        let url = URL(string: speciesUrl)!
+                        Alamofire.request(url).responseJSON { response in
+                            let result = response.result
+                            
+                            if let dict = result.value as? Dictionary<String, AnyObject> {
+                                if let flavorTextEntries = dict["flavor_text_entries"] as? [Dictionary<String, AnyObject>] {
+                                    for entry in flavorTextEntries {
+                                        if let language = entry["language"] as? Dictionary<String, String> {
+                                            if let languageName = language["name"] {
+                                                if languageName == "en" {
+                                                    if let flavorText = entry["flavor_text"] as? String {
+                                                        self._description = flavorText.replacingOccurrences(of: "\n", with: " ")
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                
+                                //TODO: One word: Eevee. Ergo, evolutions are not supported at this time.
+//                                if let evolutionChain = dict["evolution_chain"] as? Dictionary<String, String> {
+//                                    if let evolutionUrl = evolutionChain["url"] {
+//                                        let url = URL(string: evolutionUrl)!
+//                                        Alamofire.request(url).responseJSON { response in
+//                                            let result = response.result
+//                                            
+//                                            if let dict = result.value as? Dictionary<String, AnyObject> {
+//                                            }
+//                                        }
+//                                    }
+//                                }
+                                
+                            }
+                            
+                            
+                        }
+                    }
+                }
+                
             }
+            
+            
+            
         }
     }
 }
