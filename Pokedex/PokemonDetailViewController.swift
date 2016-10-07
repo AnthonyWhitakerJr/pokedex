@@ -34,7 +34,6 @@ class PokemonDetailViewController: UIViewController {
         currentEvolutionImage.image = image
         
         pokemon.downloadPokemonDetails {
-            print("Begin")
             self.updateUI()
         }
     }
