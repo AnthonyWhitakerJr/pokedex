@@ -10,16 +10,19 @@ import Foundation
 import Alamofire
 
 class Pokemon {
-    private var _name: String!
-    private var _pokedexId: Int!
-    private var _description: String!
-    private var _type: String!
-    private var _defense: Int!
-    private var _height: Int!
-    private var _weight: Int!
-    private var _attack: Int!
-    private var _nextEvolutionText: String!
+    private let _name: String!
+    private let _pokedexId: Int!
     private var _pokemonUrl: String!
+    
+    private var _attack: Int?
+    private var _defense: Int?
+    private var _description: String?
+    private var _height: Int?
+    private var _type: String?
+    private var _weight: Int?
+    
+    private var _nextEvolutionText: String?
+    
     
     var name: String {
         return _name
@@ -29,44 +32,72 @@ class Pokemon {
         return _pokedexId
     }
     
-    var description: String {
-        return _description
-    }
-    
-    var type: String {
-        return _type
+    var attack: Int {
+        if _attack == nil {
+            _attack = 0
+        }
+        
+        return _attack!
     }
     
     var defense: Int {
-        return _defense
+        if _defense == nil {
+            _defense = 0
+        }
+        
+        return _defense!
+    }
+    
+    var description: String {
+        if _description == nil {
+            _description = ""
+        }
+        
+        return _description!
     }
     
     var height: Int {
-        return _height
-    }
-    
-    var weight: Int {
-        return _weight
-    }
-    
-    var attack: Int {
-        return _attack
+        if _height == nil {
+            _height = 0
+        }
+        
+        return _height!
     }
     
     var nextEvolutionText: String {
-        return _nextEvolutionText
+        if _nextEvolutionText == nil {
+            _nextEvolutionText = ""
+        }
+        
+        return _nextEvolutionText!
+    }
+    
+    var type: String {
+        if _type == nil {
+            _type = ""
+        }
+        
+        return _type!
+    }
+    
+    var weight: Int {
+        if _weight == nil {
+            _weight = 0
+        }
+        
+        return _weight!
     }
     
     
     init(name: String, pokedexId: Int) {
         self._name = name
         self._pokedexId = pokedexId
-        
-        _pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(self.pokedexId)/"
+        self._pokemonUrl = "\(URL_BASE)\(URL_POKEMON)\(self.pokedexId)/"
     }
     
     //TODO: Refactor me
-    func downloadPokemonDetails(completed: DownloadComplete) {
+    //TODO: Only download if data is not already populated
+    func downloadPokemonDetails(completed: @escaping DownloadComplete) {
         let url = URL(string: _pokemonUrl)!
         Alamofire.request(url).responseJSON { response in
             let result = response.result
@@ -145,7 +176,7 @@ class Pokemon {
                                 
                             }
                             
-                            
+                            completed()
                         }
                     }
                 }
