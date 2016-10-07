@@ -9,7 +9,7 @@
 import UIKit
 
 class PokemonDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -27,26 +27,31 @@ class PokemonDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         nameLabel.text = pokemon.name.capitalized
-        mainImage.image = UIImage(named: "\(pokemon.pokedexId)")
+        let image = UIImage(named: "\(pokemon.pokedexId)")
+        mainImage.image = image
+        currentEvolutionImage.image = image
         
         pokemon.downloadPokemonDetails {
-//            descriptionLabel.text = pokemon.description
-//            typeLabel.text = pokemon.type
-//            defenseLabel.text = "\(pokemon.defense)"
-//            heightLabel.text = "\(pokemon.height)"
-//            pokedexLabel.text = "\(pokemon.pokedexId)"
-//            weightLabel.text = "\(pokemon.weight)"
-//            baseAttackLabel.text = "\(pokemon.attack)"
-//            evolutionLabel.text = pokemon.nextEvolutionText
+            print("Begin")
+            self.updateUI()
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-//        nameLabel.text = pokemon.name
+    func updateUI() {
+        descriptionLabel.text = pokemon.description
+        typeLabel.text = pokemon.type
+        defenseLabel.text = "\(pokemon.defense)"
+        heightLabel.text = "\(pokemon.height)"
+        pokedexLabel.text = "\(pokemon.pokedexId)"
+        weightLabel.text = "\(pokemon.weight)"
+        baseAttackLabel.text = "\(pokemon.attack)"
+//        evolutionLabel.text = pokemon.nextEvolutionText
+        
+//        nextEvolutionImage.image = UIImage
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -55,17 +60,18 @@ class PokemonDetailViewController: UIViewController {
     @IBAction func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
-
+    
     @IBAction func musicButtonPressed(_ sender: UIButton) {
     }
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
